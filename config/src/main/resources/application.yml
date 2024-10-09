@@ -7,13 +7,14 @@ spring:
     config:
       server:
         git:
-          uri: ${GIT_URL:https://github.com:443/cna-bootcamp/subride-config.git}
+          uri: ${GIT_URL:https://github.com:443/hiondal/subride-config.git}
           username: ${GIT_USERNAME:hiondal}
           password: ${GIT_TOKEN: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}
           #password: ${GIT_PASSWORD:passw0rd}
           search-paths:                      #base directory to search profiles
             - 'common'            #공통설정
             - '{application}'     #spring.application.name으로 대체됨(Config서버의 기본 동작)
+
           default-label: ${GIT_BRANCH:main}      #git branch
 encrypt:
   #openssl rand -base64 32
