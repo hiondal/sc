@@ -1,5 +1,7 @@
 package com.subride.sc.scg.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +20,9 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class SecurityConfig {
 
-    @Value("${spring.cloud.gateway.globalcors.allowedOrgins}")
+    private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+
+    @Value("${spring.cloud.gateway.globalcors.allowedOrigins}")
     private String allowedOriginsStr;
 
     @Bean
@@ -33,12 +37,15 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         String[] allowedOrigins = allowedOriginsStr.split(",");
+        logger.info("Configured Allowed Origins: {}", Arrays.toString(allowedOrigins));
 
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(allowedOrigins));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
+
+        logger.info("CORS Configuration: {}", configuration);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/api/**", configuration);

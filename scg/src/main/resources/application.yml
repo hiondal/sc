@@ -56,7 +56,7 @@ management:
 spring.cloud.gateway:
   # CORS
   globalcors:
-    allowedOrgins: ${ALLOWED_ORIGINS:http://localhost:3000}
+    allowedOrigins: ${ALLOWED_ORIGINS:http://localhost:3000}
 
   # Timeout
   httpclient:
