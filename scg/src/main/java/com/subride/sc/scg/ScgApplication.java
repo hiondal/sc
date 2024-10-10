@@ -13,11 +13,13 @@ import org.springframework.context.ApplicationContext;
 public class ScgApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(ScgApplication.class, args);
-
+/*
         log.info("************* Get services **************");
         ServiceDiscovery serviceDiscovery = context.getBean(ServiceDiscovery.class);
 
         log.info("*** MEMBER-SERVICE ***");
         serviceDiscovery.getServiceInstances("member-service");
+
+ */
     }
 }

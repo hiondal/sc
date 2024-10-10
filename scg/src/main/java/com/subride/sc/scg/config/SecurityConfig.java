@@ -23,6 +23,7 @@ public class SecurityConfig {
     private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 
     @Value("${spring.cloud.gateway.globalcors.allowedOrigins}")
+    //@Value("${ALLOWED_ORIGINS:http://localhost:3000}")
     private String allowedOriginsStr;
 
     @Bean
